@@ -26,16 +26,24 @@ namespace NeonGod
                 OnLevelLoadComplete();
 
             MethodInfo target = typeof(LevelStats).GetMethod("UpdateTimeMicroseconds");
-            HarmonyMethod prefix = new(typeof(Mod).GetMethod("PreventNewScore"));
-            harmony.Patch(target, prefix);
+            HarmonyMethod patch = new(typeof(Mod).GetMethod("PreventNewScore"));
+            harmony.Patch(target, patch);
 
-            MethodInfo target1 = typeof(LevelGate).GetMethod("SetUnlocked");
-            HarmonyMethod prefix1 = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
-            harmony.Patch(target1, prefix1);
+            target = typeof(LevelGate).GetMethod("SetUnlocked");
+            patch = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
+            harmony.Patch(target, patch);
 
-            MethodInfo target2 = typeof(Game).GetMethod("OnLevelWin");
-            HarmonyMethod prefix2 = new(typeof(Mod).GetMethod("PreventNewGhost"));
-            harmony.Patch(target2, prefix2);
+            target = typeof(Game).GetMethod("OnLevelWin");
+            patch = new(typeof(Mod).GetMethod("PreventNewGhost"));
+            harmony.Patch(target, patch);
+
+            target = typeof(Game).GetMethod("OnLevelWin");
+            patch = new HarmonyMethod(typeof(DeltaPB).GetMethod("PreOnLevelWin"));
+            harmony.Patch(target, patch);
+
+            target = typeof(MenuScreenResults).GetMethod("OnSetVisible");
+            patch = new HarmonyMethod(typeof(DeltaPB).GetMethod("PostOnSetVisible"));
+            harmony.Patch(target, null, patch);
         }
 
         private static void OnLevelLoadComplete()

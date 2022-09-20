@@ -9,3 +9,4 @@ Contains following functions:
 - Noclip
 - Reveals velocity
 - Teleport save state
+- Show difference between your personal best and your current time

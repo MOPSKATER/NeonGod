@@ -5,7 +5,9 @@ namespace NeonGod
 {
     internal class ModManager : MonoBehaviour
     {
-        private readonly Type[] mods = { typeof(Hitbox), typeof(Killall), typeof(Noclip), typeof(Teleport), typeof(Katana), typeof(RevealMomentum), typeof(Help), typeof(DemonKillSkip) };
+        private readonly Type[] mods = { typeof(Hitbox), typeof(Killall), typeof(Noclip), typeof(Teleport),
+            typeof(Katana), typeof(RevealMomentum), typeof(Help), typeof(DemonKillSkip),
+            typeof(DeltaPB) };
 
         void Awake()
         {
