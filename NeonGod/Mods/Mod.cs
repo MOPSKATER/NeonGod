@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     internal abstract class Mod : MonoBehaviour
     {

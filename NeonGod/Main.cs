@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
-using UnityEngine;
-using System.Reflection;
-using UnityEngine.SceneManagement;
-using NeonGod.Hacks;
 using MelonLoader;
+using NeonGod.Mods;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NeonGod
 {
@@ -15,7 +15,7 @@ namespace NeonGod
         public override void OnApplicationLateStart()
         {
             Game game = Singleton<Game>.Instance;
-            HarmonyLib.Harmony harmony = new ("de.MOPSKATER.NeonHack");
+            HarmonyLib.Harmony harmony = new("de.MOPSKATER.NeonHack");
 
             if (game == null)
                 return;
@@ -26,15 +26,15 @@ namespace NeonGod
                 OnLevelLoadComplete();
 
             MethodInfo target = typeof(LevelStats).GetMethod("UpdateTimeMicroseconds");
-            HarmonyMethod prefix = new (typeof(Mod).GetMethod("PreventNewScore"));
+            HarmonyMethod prefix = new(typeof(Mod).GetMethod("PreventNewScore"));
             harmony.Patch(target, prefix);
 
             MethodInfo target1 = typeof(LevelGate).GetMethod("SetUnlocked");
-            HarmonyMethod prefix1 = new (typeof(DemonKillSkip).GetMethod("UnlockGate"));
+            HarmonyMethod prefix1 = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
             harmony.Patch(target1, prefix1);
 
             MethodInfo target2 = typeof(Game).GetMethod("OnLevelWin");
-            HarmonyMethod prefix2 = new (typeof(Mod).GetMethod("PreventNewGhost"));
+            HarmonyMethod prefix2 = new(typeof(Mod).GetMethod("PreventNewGhost"));
             harmony.Patch(target2, prefix2);
         }
 
@@ -45,7 +45,7 @@ namespace NeonGod
                 return;
 
             Mod.ANTICHEAT_TRIGGERED = false;
-            GameObject hackObject = new ("HackManager");
+            GameObject hackObject = new("HackManager");
             hackObject.AddComponent<ModManager>();
         }
     }

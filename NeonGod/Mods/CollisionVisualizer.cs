@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using System.Linq;
+using Object = UnityEngine.Object;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
 
     class CollisionVisualizer
     {
-        public static void enable(bool colored)
+        public static void Enable(bool colored)
         {
             foreach (Collider collider in from c in Object.FindObjectsOfType<Collider>()
                                           where !c.isTrigger && c.gameObject.name != "Player" && !c.GetComponent<BaseDamageable>()
@@ -20,7 +20,7 @@ namespace NeonGod.Hacks
 
                     collider.gameObject.AddComponent<ColliderVisualizer>().Initialize(
                         collider.GetType() == typeof(MeshCollider) && !((MeshCollider)collider).convex ?
-                        Color.red : colored ? Random.ColorHSV(0f, 1f, 4f, 4f, 1f, 1f) : Color.green, "", 12);
+                        Color.red : colored ? UnityEngine.Random.ColorHSV(0f, 1f, 4f, 4f, 1f, 1f) : Color.green, "", 12);
                 }
                 catch
                 {
@@ -32,7 +32,7 @@ namespace NeonGod.Hacks
                 array[i].gameObject.AddComponent<ColliderVisualizer>().Initialize(ColliderVisualizer.VisualizerColorType.Red, "", 12);
             }
         }
-        public static void disable()
+        public static void Disable()
         {
             ColliderVisualizer[] visualizers = Object.FindObjectsOfType<ColliderVisualizer>();
             foreach (ColliderVisualizer visualizer in visualizers)

@@ -1,20 +1,15 @@
 ﻿using KinematicCharacterController;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.InputSystem;
-using UnityEngine;
 using System.Reflection;
-using ExampleAssembly;
+using UnityEngine.InputSystem;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
-    internal class TeleportHack : Mod
+    internal class Teleport : Mod
     {
         private readonly KinematicCharacterMotor _motor;
-        private readonly Dictionary<int, State> _states = new Dictionary<int, State>();
+        private readonly Dictionary<int, State> _states = new();
 
-        public TeleportHack()
+        public Teleport()
         {
             _motor = RM.drifter.Motor;
             if (PersistentDataStore.States != null)
@@ -66,7 +61,7 @@ namespace NeonGod.Hacks
         private void SavePos(int slot)
         {
             MouseLook[] mouseLooks = FindObjectsOfType<MouseLook>();
-            List<(string, int)> cards = new List<(string, int)>();
+            List<(string, int)> cards = new();
 
             foreach (var card in RM.mechController.GetCurrentHand())
                 cards.Add((card.data.cardID, card.GetRank()));

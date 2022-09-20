@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     internal class Killall : Mod
     {

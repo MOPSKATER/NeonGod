@@ -1,13 +1,11 @@
-﻿using System;
-using MelonLoader;
-using NeonGod.Hacks;
+﻿using NeonGod.Mods;
 using UnityEngine;
 
 namespace NeonGod
 {
     internal class ModManager : MonoBehaviour
     {
-        private readonly Type[] mods = { typeof(Hitbox), typeof(Killall), typeof(Noclip), typeof(TeleportHack), typeof(Katana), typeof(RevealMomentum), typeof(Help), typeof(DemonKillSkip) };
+        private readonly Type[] mods = { typeof(Hitbox), typeof(Killall), typeof(Noclip), typeof(Teleport), typeof(Katana), typeof(RevealMomentum), typeof(Help), typeof(DemonKillSkip) };
 
         void Awake()
         {

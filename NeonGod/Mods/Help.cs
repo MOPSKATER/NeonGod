@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using static MenuScreenPopup;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     internal class Help : Mod
     {
@@ -20,7 +16,7 @@ namespace NeonGod.Hacks
             "Unlock Gate: u\n" +
             "Toggle Help: h";
         private bool _show = false;
-        private GUIStyle _style;
+        private readonly GUIStyle _style;
 
         public Help()
         {

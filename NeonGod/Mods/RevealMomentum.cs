@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     internal class RevealMomentum : Mod
     {
@@ -35,13 +35,13 @@ namespace NeonGod.Hacks
             else
                 vColor = Color.white;
 
-            GUIStyle hStyle = new GUIStyle
+            GUIStyle hStyle = new()
             {
                 fontSize = 20,
                 fontStyle = FontStyle.Bold
             };
 
-            GUIStyle vStyle = new GUIStyle
+            GUIStyle vStyle = new()
             {
                 fontSize = 20,
                 fontStyle = FontStyle.Bold

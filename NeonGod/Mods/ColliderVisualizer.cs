@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine;
 
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     [DisallowMultipleComponent]
     public class ColliderVisualizer : MonoBehaviour

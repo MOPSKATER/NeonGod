@@ -1,6 +1,6 @@
 ﻿using UnityEngine.InputSystem;
 
-namespace NeonGod.Hacks
+namespace NeonGod.Mods
 {
     internal class Hitbox : Mod
     {
@@ -14,10 +14,10 @@ namespace NeonGod.Hacks
                 if (!_enabled)
                 {
                     TriggerAnticheat();
-                    CollisionVisualizer.enable(Keyboard.current.ctrlKey.IsPressed());
+                    CollisionVisualizer.Enable(Keyboard.current.ctrlKey.IsPressed());
                 }
                 else
-                    CollisionVisualizer.disable();
+                    CollisionVisualizer.Disable();
                 _enabled = !_enabled;
             }
         }
