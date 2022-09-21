@@ -5,6 +5,7 @@ namespace NeonGod.Mods
 {
     internal class Help : Mod
     {
+        private bool _show = false;
         private const string HELPTEXT =
             "Toggle Hitboxes: [CTRL] + b\n" +
             "Give Miracle Katana: k\n" +
@@ -16,12 +17,11 @@ namespace NeonGod.Mods
             "Unlock Gate: u\n" +
             "Toggle Coyote Display: c\n" +
             "Toggle Help: h";
-        private bool _show = false;
         private readonly GUIStyle _style;
 
         public Help()
         {
-            _style = new GUIStyle
+            _style = new()
             {
                 fontSize = 18,
                 fontStyle = FontStyle.Bold
