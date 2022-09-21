@@ -10,7 +10,9 @@ namespace NeonGod
     public class Main : MelonMod
     {
         public static Game Game { get; private set; }
-        public static bool DontUploadToLeaderboard;
+        public static bool OriginalDontUploadToLeaderboard;
+
+        public static LevelRushStats RushStats { get; private set; }
 
         public override void OnApplicationLateStart()
         {
@@ -48,11 +50,17 @@ namespace NeonGod
 
         private static void OnLevelLoadComplete()
         {
-            GameDataManager.powerPrefs.dontUploadToLeaderboard = DontUploadToLeaderboard;
+            RushStats = LevelRush.GetCurrentLevelRush();
+            if (RushStats.levelRushType == LevelRush.LevelRushType.None)
+            {
+                // Reset AC
+                GameDataManager.powerPrefs.dontUploadToLeaderboard = OriginalDontUploadToLeaderboard;
+                Mod.ANTICHEAT_TRIGGERED = false;
+            }
+
             if (SceneManager.GetActiveScene().name.Equals("Heaven_Environment"))
                 return;
 
-            Mod.ANTICHEAT_TRIGGERED = false;
             GameObject hackObject = new("HackManager");
             hackObject.AddComponent<ModManager>();
         }

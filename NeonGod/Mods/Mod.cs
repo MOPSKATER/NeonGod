@@ -13,10 +13,9 @@ namespace NeonGod.Mods
         {
             if (ANTICHEAT_TRIGGERED)
                 return;
+
             ANTICHEAT_TRIGGERED = true;
-
             GameDataManager.powerPrefs.dontUploadToLeaderboard = true;
-
             return;
 
             /* Old Anticheat attempt
