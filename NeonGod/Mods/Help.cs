@@ -14,6 +14,7 @@ namespace NeonGod.Mods
             "-  Save: CTRL + num0-2\n" +
             "-  Load: [shift] + num0-2\n" +
             "Unlock Gate: u\n" +
+            "Toggle Coyote Display: c\n" +
             "Toggle Help: h";
         private bool _show = false;
         private readonly GUIStyle _style;
