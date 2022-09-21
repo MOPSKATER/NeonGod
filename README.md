@@ -10,3 +10,6 @@ Contains following functions:
 - Reveals velocity
 - Teleport save state
 - Show difference between your personal best and your current time
+- Show Coyote Time
+
+## Show help menu inside a level with H
