@@ -38,7 +38,7 @@ namespace NeonGod
 
             target = typeof(Game).GetMethod("OnLevelWin");
             patch = new(typeof(Mod).GetMethod("PreventNewGhost"));
-            harmony.Patch(target, patch); 
+            harmony.Patch(target, patch);
 
             target = typeof(LevelRush).GetMethod("IsCurrentLevelRushScoreBetter", BindingFlags.NonPublic | BindingFlags.Static);
             patch = new(typeof(Mod).GetMethod("PreventNewGhost"));
