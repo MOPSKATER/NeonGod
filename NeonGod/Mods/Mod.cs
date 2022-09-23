@@ -72,5 +72,19 @@ namespace NeonGod.Mods
                 __instance.winAction = null;
             return true;
         }
+
+        public static bool PreventNewBestLevelRush(ref bool __result)
+        {
+            if (!ANTICHEAT_TRIGGERED) return true;
+            __result = false;
+            return false;
+        }
+
+        public static bool ResetCheatFlagOnRushInit()
+        {
+            Debug.Log("Reset!");
+            ANTICHEAT_TRIGGERED = false;
+            return true;
+        }
     }
 }
