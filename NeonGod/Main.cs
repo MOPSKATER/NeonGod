@@ -16,8 +16,8 @@ namespace NeonGod
 
         public override void OnApplicationLateStart()
         {
+            PatchGame();
             Game game = Singleton<Game>.Instance;
-            HarmonyLib.Harmony harmony = new("de.MOPSKATER.NeonHack");
 
             if (game == null)
                 return;
@@ -26,6 +26,11 @@ namespace NeonGod
 
             if (RM.drifter)
                 OnLevelLoadComplete();
+        }
+
+        private void PatchGame()
+        {
+            HarmonyLib.Harmony harmony = new("de.MOPSKATER.NeonHack");
 
             MethodInfo target = typeof(LevelStats).GetMethod("UpdateTimeMicroseconds");
             HarmonyMethod patch = new(typeof(Mod).GetMethod("PreventNewScore"));
@@ -46,6 +51,16 @@ namespace NeonGod
             target = typeof(MenuScreenResults).GetMethod("OnSetVisible");
             patch = new HarmonyMethod(typeof(DeltaPB).GetMethod("PostOnSetVisible"));
             harmony.Patch(target, null, patch);
+
+            target = typeof(LevelRush).GetMethod("UseMiracle");
+            Debug.Log(target);
+            patch = new HarmonyMethod(typeof(Katana).GetMethod("PreUseMiracle"));
+            harmony.Patch(target, patch);
+
+            target = typeof(LevelRush).GetMethod("CanUseMiracle");
+            Debug.Log(target);
+            patch = new HarmonyMethod(typeof(Katana).GetMethod("PreCanUseMiracle"));
+            harmony.Patch(target, patch);
         }
 
         private static void OnLevelLoadComplete()
