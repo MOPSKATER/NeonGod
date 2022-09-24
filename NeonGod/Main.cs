@@ -63,6 +63,7 @@ namespace NeonGod
 
         private void OnLevelLoadComplete()
         {
+            Time.fixedDeltaTime = 1f / 60f;
             RushStats = LevelRush.GetCurrentLevelRush();
             if (RushStats.levelRushType == LevelRush.LevelRushType.None)
             {

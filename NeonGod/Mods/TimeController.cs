@@ -9,7 +9,6 @@ namespace NeonGod.Mods
 
         void Update()
         {
-
             if (Keyboard.current.upArrowKey.wasPressedThisFrame)
             {
                 TriggerAnticheat();
@@ -24,7 +23,7 @@ namespace NeonGod.Mods
             {
                 TriggerAnticheat();
                 float newTime = RM.time.GetCurrentTimeScale() - scaleStep;
-                if (newTime > 0f)
+                if (newTime > 0.15f)
                 {
                     RM.time.SetTargetTimescale(newTime);
                     Time.fixedDeltaTime = newTime / 60;

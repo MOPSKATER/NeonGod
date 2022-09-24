@@ -41,7 +41,7 @@ namespace NeonGod.Mods
             if (!(RM.mechController.GetIsAlive() && _show))
                 return;
 
-            GUI.Label(new Rect(Camera.main.pixelWidth - 250, 10, 200, 100), HELPTEXT, _style);
+            GUI.Label(new Rect(Camera.main.pixelWidth - 300, 10, 200, 100), HELPTEXT, _style);
         }
     }
 }

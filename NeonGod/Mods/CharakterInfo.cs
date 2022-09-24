@@ -28,6 +28,12 @@ namespace NeonGod.Mods
             fontStyle = FontStyle.Bold
         };
 
+        private readonly GUIStyle _acStyle = new()
+        {
+            fontSize = 20,
+            fontStyle = FontStyle.Bold
+        };
+
         void Update()
         {
             Vector3 velocity = RM.drifter.Motor.BaseVelocity;
@@ -76,11 +82,13 @@ namespace NeonGod.Mods
             _hStyle.normal.textColor = hColor;
             _vStyle.normal.textColor = vColor;
             _cStyle.normal.textColor = cColor;
+            _acStyle.normal.textColor = Color.blue;
 
-            GUI.Label(new Rect(10, 10, 100, 30), "HVelocity: " + _hVelocity.Truncate(4), _hStyle);
-            GUI.Label(new Rect(10, 40, 100, 30), "VVelocity: " + _vVelocity.Truncate(4), _vStyle);
+            GUI.Label(new Rect(10, 10, 150, 30), "Anticheat: " + (ANTICHEAT_TRIGGERED ? "Triggered!" : "Sleeping"), _acStyle);
+            GUI.Label(new Rect(10, 40, 150, 30), "HVelocity: " + _hVelocity.Truncate(4), _hStyle);
+            GUI.Label(new Rect(10, 70, 150, 30), "VVelocity: " + _vVelocity.Truncate(4), _vStyle);
             if (_active)
-                GUI.Label(new Rect(10, 70, 100, 30), "Coyote: " + _coyote, _cStyle);
+                GUI.Label(new Rect(10, 100, 150, 30), "Coyote: " + _coyote, _cStyle);
         }
     }
 }
