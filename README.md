@@ -11,5 +11,6 @@ Contains following functions:
 - Teleport save state
 - Show difference between your personal best and your current time
 - Show Coyote Time
+- Time control
 
 ## Show help menu inside a level with H

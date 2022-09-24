@@ -52,14 +52,6 @@ namespace NeonGod
             patch = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
             harmony.Patch(target, patch);
 
-            target = typeof(Game).GetMethod("OnLevelWin");
-            patch = new HarmonyMethod(typeof(DeltaPB).GetMethod("PreOnLevelWin"));
-            harmony.Patch(target, patch);
-
-            target = typeof(MenuScreenResults).GetMethod("OnSetVisible");
-            patch = new HarmonyMethod(typeof(DeltaPB).GetMethod("PostOnSetVisible"));
-            harmony.Patch(target, null, patch);
-
             target = typeof(LevelRush).GetMethod("UseMiracle");
             patch = new HarmonyMethod(typeof(Katana).GetMethod("PreUseMiracle"));
             harmony.Patch(target, patch);

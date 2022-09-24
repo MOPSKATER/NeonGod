@@ -16,6 +16,7 @@ namespace NeonGod.Mods
             "-  Load: [shift] + num0-2\n" +
             "Unlock Gate: u\n" +
             "Toggle Coyote Display: c\n" +
+            "Control Time: Arrowkey up/down\n" +
             "Toggle Help: h";
         private readonly GUIStyle _style;
 
