@@ -1,5 +1,6 @@
 ﻿using KinematicCharacterController;
 using System.Reflection;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace NeonGod.Mods
@@ -93,6 +94,8 @@ namespace NeonGod.Mods
             Yinfo.SetValue(mouseLooks[1], state.Rotation.Item2);
 
             _motor.SetTransientPosition(state.Position);
+
+            Debug.Log("Load cards: " + loadCards);
 
             if (loadCards && state.Cards != null)
             {
