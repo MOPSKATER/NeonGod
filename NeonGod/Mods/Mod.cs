@@ -59,7 +59,8 @@ namespace NeonGod.Mods
                 if (!ANTICHEAT_TRIGGERED)
                     __instance._timeBestMicroseconds = newTime;
                 else
-                    __instance._timeBestMicroseconds = 600000000;
+                    if (__instance._timeBestMicroseconds == 999999999999L)
+                        __instance._timeBestMicroseconds = 600000000;
                 __instance._newBest = true;
             }
             else
