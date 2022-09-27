@@ -41,7 +41,7 @@ namespace NeonGod
             harmony.Patch(target, patch);
 
             target = typeof(LevelRush).GetMethod("IsCurrentLevelRushScoreBetter", BindingFlags.NonPublic | BindingFlags.Static);
-            patch = new(typeof(Mod).GetMethod("PreventNewGhost"));
+            patch = new(typeof(Mod).GetMethod("PreventNewBestLevelRush"));
             harmony.Patch(target, patch);
 
             target = typeof(LevelRush).GetMethod("ClearLevelRushStats");
