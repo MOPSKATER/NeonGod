@@ -82,9 +82,9 @@ namespace NeonGod.Mods
             _hStyle.normal.textColor = hColor;
             _vStyle.normal.textColor = vColor;
             _cStyle.normal.textColor = cColor;
-            _acStyle.normal.textColor = ANTICHEAT_TRIGGERED ? Color.white : Color.red;
+            _acStyle.normal.textColor = AntiCheat.Anticheat.IsAnticheatTriggered() ? Color.white : Color.red;
 
-            GUI.Label(new Rect(10, 10, 150, 30), "Anticheat: " + (ANTICHEAT_TRIGGERED ? "Triggered!" : "Sleeping"), _acStyle);
+            GUI.Label(new Rect(10, 10, 150, 30), "Anticheat: " + (AntiCheat.Anticheat.IsAnticheatTriggered() ? "Triggered!" : "Sleeping"), _acStyle);
             GUI.Label(new Rect(10, 40, 150, 30), "HVelocity: " + _hVelocity.Truncate(4), _hStyle);
             GUI.Label(new Rect(10, 70, 150, 30), "VVelocity: " + _vVelocity.Truncate(4), _vStyle);
             if (_active)

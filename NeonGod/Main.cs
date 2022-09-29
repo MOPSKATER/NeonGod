@@ -4,7 +4,6 @@ using NeonGod.Mods;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static MechController;
 
 namespace NeonGod
 {
@@ -17,6 +16,7 @@ namespace NeonGod
 
         public override void OnApplicationLateStart()
         {
+            AntiCheat.Anticheat.TriggerAnticheat();
             PatchGame();
             Game game = Singleton<Game>.Instance;
 
@@ -32,24 +32,9 @@ namespace NeonGod
         private void PatchGame()
         {
             HarmonyLib.Harmony harmony = new("de.MOPSKATER.NeonHack");
-            MethodInfo target = typeof(LevelStats).GetMethod("UpdateTimeMicroseconds");
-            HarmonyMethod patch = new(typeof(Mod).GetMethod("PreventNewScore"));
-            harmony.Patch(target, patch);
 
-            target = typeof(Game).GetMethod("OnLevelWin");
-            patch = new(typeof(Mod).GetMethod("PreventNewGhost"));
-            harmony.Patch(target, patch);
-
-            target = typeof(LevelRush).GetMethod("IsCurrentLevelRushScoreBetter", BindingFlags.NonPublic | BindingFlags.Static);
-            patch = new(typeof(Mod).GetMethod("PreventNewBestLevelRush"));
-            harmony.Patch(target, patch);
-
-            target = typeof(LevelRush).GetMethod("ClearLevelRushStats");
-            patch = new(typeof(Mod).GetMethod("ResetCheatFlagOnRushInit"));
-            harmony.Patch(target, patch);
-
-            target = typeof(LevelGate).GetMethod("SetUnlocked");
-            patch = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
+            MethodInfo target = typeof(LevelGate).GetMethod("SetUnlocked");
+            HarmonyMethod patch = new(typeof(DemonKillSkip).GetMethod("UnlockGate"));
             harmony.Patch(target, patch);
 
             target = typeof(LevelRush).GetMethod("UseMiracle");
@@ -68,12 +53,6 @@ namespace NeonGod
         private void OnLevelLoadComplete()
         {
             RushStats = LevelRush.GetCurrentLevelRush();
-            if (RushStats.levelRushType == LevelRush.LevelRushType.None)
-            {
-                // Reset AC
-                GameDataManager.powerPrefs.dontUploadToLeaderboard = OriginalDontUploadToLeaderboard;
-                Mod.ANTICHEAT_TRIGGERED = false;
-            }
 
             if (SceneManager.GetActiveScene().name.Equals("Heaven_Environment"))
                 return;
