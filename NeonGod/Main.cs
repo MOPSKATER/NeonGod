@@ -4,6 +4,7 @@ using NeonGod.Mods;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static MechController;
 
 namespace NeonGod
 {
@@ -31,7 +32,6 @@ namespace NeonGod
         private void PatchGame()
         {
             HarmonyLib.Harmony harmony = new("de.MOPSKATER.NeonHack");
-
             MethodInfo target = typeof(LevelStats).GetMethod("UpdateTimeMicroseconds");
             HarmonyMethod patch = new(typeof(Mod).GetMethod("PreventNewScore"));
             harmony.Patch(target, patch);
@@ -59,6 +59,10 @@ namespace NeonGod
             target = typeof(LevelRush).GetMethod("CanUseMiracle");
             patch = new HarmonyMethod(typeof(Katana).GetMethod("PreCanUseMiracle"));
             harmony.Patch(target, patch);
+
+            target = typeof(MechController).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance);
+            patch = new HarmonyMethod(typeof(UIZipline).GetMethod("PostUpdate"));
+            harmony.Patch(target, null, patch);
         }
 
         private void OnLevelLoadComplete()

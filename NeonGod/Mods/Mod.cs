@@ -60,7 +60,7 @@ namespace NeonGod.Mods
                     __instance._timeBestMicroseconds = newTime;
                 else
                     if (__instance._timeBestMicroseconds == 999999999999L)
-                        __instance._timeBestMicroseconds = 600000000;
+                        __instance._timeBestMicroseconds =  600000000;
                 __instance._newBest = true;
             }
             else
@@ -85,7 +85,6 @@ namespace NeonGod.Mods
 
         public static bool ResetCheatFlagOnRushInit()
         {
-            Debug.Log("Reset!");
             ANTICHEAT_TRIGGERED = false;
             return true;
         }
